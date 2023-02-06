@@ -14,6 +14,14 @@ out/
 /.idea
 
 
+# build
+**/dist
+/dist
+
+# node_modules
+*/node_modules
+/node_modules
+
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
