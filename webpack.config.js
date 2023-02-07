@@ -20,7 +20,7 @@ const webpackMode = process.env.NODE_ENV || 'development'
 
 module.exports = {
   mode: webpackMode,
-  entry: {
+  entry: { // Entry: 페이지 시작의 첫번째 파일로, 의존성 관계 파악 및 그룹핑을 위한 위치 정보를 알려주는 기능을 한다.
     main: './src/pages/index.js',
     // ! ##################################################
     //  ######## Entry 파일이 여러 개 일 경우 (css, js) 파일 수정시,
@@ -32,7 +32,7 @@ module.exports = {
     // ],
     // ##################################################
   },
-  output: {
+  output: { // output: 웹팩에게 그룹핑된 코드를 어디 위치 시킬지 알려준다.
     // __dirname 현재 파일의 위치하고 있는 경로로 약속된 변수
     filename: '[name].bundle.js',
     path: path.resolve( __dirname, 'dist' ),
@@ -84,6 +84,7 @@ module.exports = {
         enforce: 'pre',
         use: ['source-map-loader'],
       },
+      { test: /\.ts$/, use: 'ts-loader' },
       {
         test: /\.(png|jpe?g|gif|svg|webp)$/i,
         use: {
@@ -152,5 +153,8 @@ module.exports = {
   
   ],
   devtool: 'inline-source-map',
-  
+  resolve: {
+    // 생략 가능한 확장자 // TYPESCRIPT 적용 시 가능.
+    // extensions: ['ts', 'js', 'json']
+  }
 };
