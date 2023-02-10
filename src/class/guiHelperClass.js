@@ -25,9 +25,9 @@ export class GuiHelperClass {
       
     }
     if ( this.camera ) {
-      this.gui.add( this.camera.position, 'z', -10, 10, 0.1 ).name( 'Cam Z' );
-      this.gui.add( this.camera.position, 'z', -10, 10, 0.1 ).name( 'Cam Z' );
-      this.gui.add( this.camera.position, 'z', -10, 10, 0.1 ).name( 'Cam Z' );
+      this.gui.add( this.camera.position, 'x', -50, 50, 0.1 ).name( 'Cam X' );
+      this.gui.add( this.camera.position, 'y', -50, 50, 0.1 ).name( 'Cam Y' );
+      this.gui.add( this.camera.position, 'z', -10, 50, 0.1 ).name( 'Cam Z' );
     }
   }
   

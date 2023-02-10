@@ -41,8 +41,100 @@ export function draw_03 ({clock, renderer, scene, camera, mesh, stats}) {
   );
 }
 
-/*
-  renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+
+export function draw_04 ({clock, renderer, scene, camera, meshes, stats}) {
+  if(stats){
+    stats.update();
+  }
+  
+  const delta = clock.getDelta();
+  const [obj1, obj2, obj3, ...rest] = meshes;
+  obj1.rotation.y += delta;
+  obj2.rotation.y += delta;
+  obj3.rotation.y += delta;
+  
+  
   renderer.render( scene, camera );
-*
-* */
+  renderer.setAnimationLoop(
+    draw_04.bind(this, {
+      clock, renderer, scene, camera, meshes, stats
+    })
+  );
+}
+
+
+
+export function draw_05({
+                          clock,
+                          meshes,
+                          renderer,
+                          scene,
+                          camera,
+                          stats,
+                          geometry,
+                          callback
+}) {
+  if(stats){
+    stats.update();
+  }
+  
+  if(callback && typeof callback === 'function'){
+    callback();
+  }
+  if ( geometry ) {
+    geometry.attributes.position.needsUpdate = true;
+  }
+  renderer.render( scene, camera );
+  renderer.setAnimationLoop(
+    draw_05.bind( this,
+      {
+        clock,
+        meshes,
+        renderer,
+        scene,
+        camera,
+        stats,
+        geometry,
+        callback
+    
+      })
+  );
+}
+
+
+
+export function draw_06({
+                          clock,
+                          meshes,
+                          renderer,
+                          scene,
+                          camera,
+                          stats,
+                          geometry,
+                          callback
+                        }) {
+  if(stats){
+    stats.update();
+  }
+  if(callback && typeof callback === 'function'){
+    callback();
+  }
+  
+  
+  renderer.render( scene, camera );
+  renderer.setAnimationLoop(
+    draw_06.bind( this,
+      {
+        clock,
+        meshes,
+        renderer,
+        scene,
+        camera,
+        stats,
+        geometry,
+        callback
+      })
+  );
+}

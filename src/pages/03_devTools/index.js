@@ -31,10 +31,11 @@ export default function lec03_example () {
   
   
   
-  // Scene
+  // ###################### scene ######################
   const scene = new THREE.Scene();
+  // ###################################################
   
-  // Camera
+  // ###################### camera ######################
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -45,8 +46,10 @@ export default function lec03_example () {
   camera.position.y = 10; // GridHelper 연두색
   camera.position.z = -1;
   scene.add( camera );
+  // ###################################################
   
-  // Light => AmbientLight: 전체적인 조명효과
+  
+  // ###################### light ######################
   const ambientLight = new THREE.AmbientLight( 'white', 0.3 );
   scene.add( ambientLight );
   
@@ -54,10 +57,11 @@ export default function lec03_example () {
   directionalLight.position.x = 1;
   directionalLight.position.z = 2;
   scene.add( directionalLight );
+  // ###################################################
   
   
   
-  // Mesh
+  // ###################### mesh ######################
   const geometry = new THREE.BoxGeometry( 1, 1, 1 );
   const material = new THREE.MeshStandardMaterial( {
     color: 'seagreen'
@@ -67,12 +71,17 @@ export default function lec03_example () {
   // mesh.position.y = 0;
   // mesh.position.z = 0;
   scene.add( mesh );
-  
-  camera.lookAt( mesh.position ); // ! 카메라 포지션 조절
-  
   // ###################################################
+  
+  // ! 카메라 포지션 조절
+  camera.lookAt( mesh.position );
+  
+  
+  
+  // ###################### canvas event ######################
   c.appendChild( renderer.domElement);
   c.resizeHandler( setSize.bind(window, {renderer, camera, scene}) );
+  // ###################################################
   
   
   // ######################## HELPER ##############################
